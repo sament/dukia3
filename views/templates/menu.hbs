@@ -1,9 +1,9 @@
 
-  <nav class="container sticky-top  navbar  navbar-expand-lg navbar-light bg-primary mb-10">
+  <nav id="stickyNav" class="sticky-top  navbar  navbar-expand-lg navbar-light bg-primary mb-10 w-100">
   <div class="container-fluid">
     <a class="navbar-brand" href="/" data-link>
     
-    <img style="width: 60px" src="https://dukiagoldrefinery.co/images/logo_centre_web.png" />
+    <img style="width: 45px" src="https://dukiagoldrefinery.co/images/logo_centre_web.png" />
     </a>
     <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="text-white navbar-toggler-icon"></span>
@@ -15,8 +15,13 @@
         <a class="text-white nav-link {{#if isActive.[@index]}}active{{/if}}" aria-current="page" href="{{link}}">{{title}}</a>
   </li>
   {{/each}}
-        
-        <li class="nav-item dropdown">
+
+        <li class="nav-item">
+  <a class="text-white nav-link" href="#">
+    <i class="fa-regular fa-cart-shopping"></i> Cart
+  </a>
+      </li>
+       <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
           </a>
@@ -26,7 +31,7 @@
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
-        </li>
+        </li> -->
         
       </ul>
       <form class="d-flex">

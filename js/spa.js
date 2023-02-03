@@ -9,6 +9,10 @@ Written by: Sedem stickx <sedemdatsa69@gmail.com>
 //console.log(performance.navigation.type);
 
 //when user clicks on any anchor tag with a data-link attribute fire this event.
+//import { products } from "./js/products.js";
+//import { products } from 'products.js';
+
+
 
   
 Handlebars.registerHelper("eq", function(a, b) {
@@ -50,12 +54,17 @@ var path = window.location.pathname;
  let data = {menu: menu, isActive: isActive};
   
   renderX('/views/templates/menu.hbs', data, "#menu");
+ $.getScript("./views/templates/menu.js", function(){
+  console.log("views menu script loaded");
+}) 
+
+  
 };
-let c = 0;
+//let c = 0;
  layouts.topHeader =  function() {renderX('/views/templates/top-header.hbs', null, "#top-header");
              //const ob =  JSON.stringify(this.caller);
-           console.log("gg" + c);
-                                  c=c+1;
+          // console.log("gg" + c);
+                               //   c=c+1;
                                  };
 
 layouts.footer = function() {
@@ -63,6 +72,10 @@ layouts.footer = function() {
 };
 
 let views = {};
+
+views.product = function() {
+  alert("under constructiom");
+}
 
 views.login = function() {
   renderX('/views/login.hbs', null);
@@ -73,8 +86,17 @@ views.login = function() {
   //});
 };
 views.getStarted = function () {renderX('/views/register.hbs', null)};
-  views.home = function () {renderX('/views/home.hbs', {});};
-//alert("af");
+
+  views.home = function () {
+    console.log("home called");
+    const slides2 = {products: products.getRandomProducts(6)};
+    console.log(slides2);
+//localStorage.setItem("products", JSON.stringify(slides));
+    
+    renderX('/views/home.hbs', slides2);
+ $.getScript("./views/home.js", function(){ console.log("views home script loaded");}) 
+  };
+
 //function to display the contact page content
  views.contact = renderX('/views/contact.hbs',{});
   
@@ -88,6 +110,7 @@ let routesX = {
    '/': views.home,
   '/get-started': views.getStarted,
    '/contact': views.contact,
+  '/product/:id': views.product,
    '/order/:id': views.order,
   '/login': views.login
 };
@@ -104,38 +127,24 @@ $(document).on('click','[data-link]', function (e) {
 
    window.history.pushState(null,null,routes);//assign new url to address bar and add page in browser history without reloading the page.
       
-   console.log("Ajax loaded: "+page);
+   //console.log("Ajax loaded: "+page);
   console.log(routesX);
 
-   /*$.get(page, function (pageContent) {//return selected page content trough ajax.
-      $("#page").html(pageContent);//load content into main div
-   });*/
-//layouts.topHeader();
 routesX[page]();
   //renderX(page, null);
 });
 
- 
 
 //when window's history changes fire this event.
 //e.g When user goes back or forward in a session browser.
  $(window).on('popstate', function (){
-
-   //alert("per");
-
   var url = window.location.href;//get page url from address bar.
   var routes = url.substring(url.lastIndexOf('/')+1);//return page route from url.
   var page = routes != '' ? url+".hbs" : "/views/home.hbs" ;//if route is empty assign home.html to page to ajax load the default content.
 
-
-  /*$.get(page, function (pageContent) {//return selected page content trough ajax.
-   $("#page").html(pageContent);//load content into main div
-  });*/
-//layouts.topHeader();
 renderX(page, null);
    
 });
-
 
 
 //.htaccess for apache or any other web server edit file has to be edited 
@@ -143,23 +152,16 @@ renderX(page, null);
 //e.g When user reloads the page or enters or paste a url with the same domain name but different path in the browser.
  $(window).on('load', function (){
 
-   console.log("ON LOAD");
+   //console.log("ON LOAD");
   var url = window.location.href;//get page url from address bar.
   var routes = url.substring(url.lastIndexOf('/')+1);//return page route from url.
   var page = routes != '' ? url+".hbs" : "/views/home.hbs" ;//if route is empty assign home.html to page to ajax load the default content.
 //alert(page);
- //console.log(page);
+ //console.log(products.items);
   layouts.topHeader();
    layouts.menu();
    layouts.footer();
-   
-   renderX(page, null);
 
-  /*$.get(page, function (pageContent) {//return selected page content trough ajax.
-  var template = Handlebars.compile(pageContent);
-      var html = template({});
-      $("#page").html(html);
-    
-    //load content into main div
-  });*/
+   routesX['/']();
+   //renderX(page, null);
 });

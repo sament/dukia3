@@ -2,17 +2,91 @@
 
   <div class="bg-light banner p-4 m-30">
     <div class="row">
-      <div class ="col-md-7">
-    <h3 class="banner-h text-primary">Buy & Sell Gold</h3>
-    <div class="talk">
-Dukia Gold, your trustworthy refinery and bullion merchant.
-     <div> <a href="/buy-now" data-link class="btn block btb-sm btn-primary-outline"> Buy Now</a>
+      <div class ="col p-2">
+    <h2 class="banner-h dukia-color">Buy & Sell Gold</h2>
+    <div class="talk text-large fw-light">
+Dukia Gold, your trustworthy refiner and bullion merchant.
+     <div> <a href="/buy-now" data-link class="btn mt-2 btn-sm btn-primary-outline"> Buy Now</a>
     </div></div>
       </div>
-      <div class="col-md-5">
-        <img src="https://dukiagoldrefinery.co/images/logo_centre_web.png" style="width: 100px" />
-      </div>
+     
     </div>
 
   </div>
 </div>
+
+
+<div class="container bg-light">
+<div class="row">
+  <div class="slider">
+      {{#each products}}
+<div class="card mx-2 py-4 px-4" style="width: 18rem; position:relative">
+  <img data-lazy="{{image}}" class="card-img-top " alt="...">
+  <div class="card-body">
+    <h6 class="card-title fw-bold"><a href="/product/{{id}}" data-link>{{heading}}</a></h6>
+    <p class="card-text">Some quick example text to build on the card title and .</p>
+    <a id="addToCart" href="#"  item-id="{{id}}" item-name="{{heading}}" class="rounded btn btn-outline-primary btn-sm w-100"   data-toggle="modal" data-target="#addtoCartNotice" data-product-name="{{heading}} X" data-rate="1" data-bs-toggle="modal" data-bs-target="#addtoCartNotice"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+      </a>
+  </div>
+<div class="hide" style="position: absolute; top: 17px; right: 10px; padding: 11px;  border-radius: 50%; border: solid 1px var(--primary)">
+  <a href="#" class="dukia-color" id="addToCart" item-id="{{id}}" > 
+    <i class="fa fa-cart-plus" class="dukia-color"></i></a>
+  </div>
+  
+</div>
+
+  {{/each}}
+    
+</div>
+			
+  
+</div>
+
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="addtoCartNotice" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Item Added to Cart!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <label id="mCartProduct"></label>
+        <div class="container-fluid">
+  <div class="row">
+    <div class="col-4 p-2">
+      <img src="product-image.jpg" alt="Product Image" class="img-fluid">
+    </div>
+    <div class="col-8 p-2">
+      <h5>Product Name</h5>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-6 p-2">
+      <h6>Product Subtotal</h6>
+    </div>
+    <div class="col-6 p-2 text-right">
+      <h6>$100</h6>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-12 p-2 text-center">
+      <h6>Shipping Terms Apply</h6>
+    </div>
+  </div>
+</div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<scrpt src="./views/home.js" ></scrpt>
