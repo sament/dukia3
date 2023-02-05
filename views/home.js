@@ -17,7 +17,7 @@ console.log("ready doc in home");
     infinite: true,
     lazyLoad: 'ondemand',
   slidesToShow: 3,
-  slidesToScroll: 1, autoplay: true, autoplaySpeed: 4000,
+  slidesToScroll: 1, autoplay: true, autoplaySpeed: 7600,
 
 centerMode: true,
   variableWidth: true,

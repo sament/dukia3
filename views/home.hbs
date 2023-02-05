@@ -1,18 +1,27 @@
-<div class="mt-10">
+<div class="bg-light mb-4 mt-10" style="background: url(https://res.cloudinary.com/dcu3hr3eo/image/upload/v1675475193/37E3BFE5-D357-439F-9693-F0F93D1DA97F_ufg68z.jpg) center no-repeat; background-size: cover; min-height: 210px">
 
-  <div class="bg-light banner p-4 m-30">
-    <div class="row">
-      <div class ="col p-2">
-    <h2 class="banner-h dukia-color">Buy & Sell Gold</h2>
-    <div class="talk text-large fw-light">
-Dukia Gold, your trustworthy refiner and bullion merchant.
-     <div> <a href="/buy-now" data-link class="btn mt-2 btn-sm btn-primary-outline"> Buy Now</a>
-    </div></div>
-      </div>
-     
+  <div class="bg-light_ banner p-4 m-30">
+<div class="container" >
+  <div class="row row-cols-2o 1">
+    <div class="col-1 ccol">
+      <!-- 30% width column content here -->
+      <img class ="hide rounded w-3"  style="width:80%" src="https://res.cloudinary.com/dcu3hr3eo/image/upload/v1675475193/37E3BFE5-D357-439F-9693-F0F93D1DA97F_ufg68z.jpg" />
+      
     </div>
-
+    <div class="col-11 xcol">
+      <!-- 70% width column content here -->
+          <h2 class="banner-h dukia-color_ text-white">Buy & Sell Gold</h2>
+    <div class="talk text-large fw-light text-white">
+Dukia Gold, your trustworthy refiner and bullion merchant.
+     <div> <a href="/buy-now" data-link class="mt-2 btn btn-sm btn-outline-light yellow3-b cta-w bg-white text-dark"> Buy Now</a>
+    </div>
+    </div>
+    
+      
+    </div>
   </div>
+</div>
+</div>
 </div>
 
 
@@ -20,10 +29,10 @@ Dukia Gold, your trustworthy refiner and bullion merchant.
 <div class="row">
   <div class="slider">
       {{#each products}}
-<div class="card mx-2 py-4 px-4" style="width: 18rem; position:relative">
-  <img data-lazy="{{image}}" class="card-img-top " alt="...">
+<div class="card mx-2 py-4 px-4 no-border" style="width: 18rem; position:relative; ">
+  <img data-lazy="{{image}}" class="card-img-top w-4" alt="..." style="">
   <div class="card-body">
-    <h6 class="card-title fw-bold"><a href="/product/{{id}}" data-link>{{heading}}</a></h6>
+    <h6 class="card-title text-sm fw-bold"><a href="/product/{{id}}" data-link>{{heading}}</a></h6>
     <p class="card-text">Some quick example text to build on the card title and .</p>
     <a id="addToCart" href="#"  item-id="{{id}}" item-name="{{heading}}" class="rounded btn btn-outline-primary btn-sm w-100"   data-toggle="modal" data-target="#addtoCartNotice" data-product-name="{{heading}} X" data-rate="1" data-bs-toggle="modal" data-bs-target="#addtoCartNotice"><i class="fa fa-cart-plus" aria-hidden="true"></i>
       </a>
@@ -84,8 +93,6 @@ Dukia Gold, your trustworthy refiner and bullion merchant.
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
     </div>
   </div>
 </div>

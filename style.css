@@ -11,6 +11,7 @@ footer {
 :root {
   --primary: #244D91;
   --gold: #A69145;
+  --gold1: ##ffc107;
 }
 
 .btn-primary,
@@ -122,3 +123,17 @@ white-space: nowrap;}
     position: fixed;
   }
 
+
+.yellow3{background-color: var(--gold1)}
+.yelow3-b{border-color: var(--gold1)}
+.cta-w{background-color: $yellow-500;}
+.no-border{border: none !important;}
+
+
+
+@media (min-width: 992px) {
+.menuitems {
+display: flex;
+justify-content: center;
+}
+}
