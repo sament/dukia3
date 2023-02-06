@@ -12,13 +12,19 @@ Written by: Sedem stickx <sedemdatsa69@gmail.com>
 //import { products } from "./js/products.js";
 //import { products } from 'products.js';
 
-
-
   
 Handlebars.registerHelper("eq", function(a, b) {
     return a === b;
   });
 
+Handlebars.registerHelper("reduceString", function(txt) {
+  if (txt) {
+  let words = txt.split(" ");
+  if (words.length <= 15) return txt;
+  let reducedWords = words.slice(0, 15);
+  return reducedWords.join(" ") + "...";
+  }
+  });
 
 let render = function(pageContent, data, element ="#page") {
    let template = Handlebars.compile(pageContent);
@@ -41,6 +47,7 @@ layouts.menu = function (){
 let menu = [
 {title: "Buy Gold", parent: null, link: "/buy-gold"},
 {title: "Sell Gold", parent: null, link: "/sell-gold"},
+  {title: "Coins Catalog", parent: null, link: "/catalog-coins"},
 {title: "About", parent: null, link: "/about"},
 {title: "Contact", parent: null, link: "/contact"}
 ];
@@ -90,12 +97,18 @@ views.getStarted = function () {renderX('/views/register.hbs', null)};
   views.home = function () {
     console.log("home called");
     const slides2 = {products: products.getRandomProducts(6)};
-    console.log(slides2);
+    //console.log(slides2);
 //localStorage.setItem("products", JSON.stringify(slides));
     
     renderX('/views/home.hbs', slides2);
  $.getScript("./views/home.js", function(){ console.log("views home script loaded");}) 
   };
+
+views.coinsCatalog = function() {
+  alert("c");
+      const items = {products: products.getCoins()};
+    renderX('/views/catalog-coins.hbs', items);
+};
 
 //function to display the contact page content
  views.contact = renderX('/views/contact.hbs',{});
@@ -110,6 +123,7 @@ let routesX = {
    '/': views.home,
   '/get-started': views.getStarted,
    '/contact': views.contact,
+  '/catalog-coins': views.coinsCatalog,
   '/product/:id': views.product,
    '/order/:id': views.order,
   '/login': views.login
