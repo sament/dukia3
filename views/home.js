@@ -17,7 +17,15 @@ console.log("ready doc in home");
     infinite: true,
     lazyLoad: 'ondemand',
   slidesToShow: 3,
-  slidesToScroll: 1, autoplay: true, autoplaySpeed: 7600,
+  slidesToScroll: 1, 
+    autoplay: true, 
+    autoplaySpeed: 7600,
+    arrows: true,
+    prevArrow: '<button type="button" class="slick-prev carousel-control-prev-icon bg-primary left" aria-label="carousel-control"></button>',
+    
+    nextArrow: '<button type="button" class="slick-next carousel-control-next-icon bg-primary" aria-label="carousel-control"></button>',
+    
+
 
 centerMode: true,
   variableWidth: true,

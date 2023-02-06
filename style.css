@@ -130,10 +130,32 @@ white-space: nowrap;}
 .no-border{border: none !important;}
 
 
-
 @media (min-width: 992px) {
 .menuitems {
 display: flex;
 justify-content: center;
 }
+}
+
+    .card {
+        margin-bottom: 20px;
+      }
+      .card-img-top {
+        height: 350px;
+        object-fit: contain;
+      }
+      .carousel-control-prev, .carousel-control-next {
+        cursor: pointer;
+      }
+
+.slick-prev {
+  left: -10px;
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.slick-next {
+  right: 10px;
+  top: 50%;
+  transform: translate(0, -50%);
 }

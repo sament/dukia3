@@ -2,7 +2,7 @@
 <html>
   <head>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Dukia Trading :: {{page}}</title>
+    <title>Dukia Trading :: </title>
 
     <!-- font awesome -->
   <!--  <link rel="stylesheet" href="https://kit.fontawesome.com/91c4027de4.css" crossorigin="anonymous"> -->
@@ -20,7 +20,7 @@
     <div id="top-header"></div>
     <div id="menu"></div>
 
-    <div id="page" class="flex-grow-1">
+    <div id="page" class="bg-light flex-grow-1">
       <div class="container mt-6">
       <div class=" progress">
   <div class="progress-bar bg-primary progress-bar-striped progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div></div>

@@ -129,6 +129,16 @@ let routesX = {
   '/login': views.login
 };
 
+let routesX2 = {
+
+  '/': ['Home', views.home],
+  '/login': ['Login', views.login],
+  '/get-started': ['Get Started', views.getStarted]
+  //'/order:id': ['']
+};
+
+console.log(routesX2['/login'][1]);
+
   //layouts.topHeader();
 
 $(document).on('click','[data-link]', function (e) {
