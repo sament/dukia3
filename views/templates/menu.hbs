@@ -12,12 +12,12 @@
       <ul class="text-white menuitems navbar-nav me-auto mb-2 mb-lg-0">
           {{#each menu}}
   <li class="nav-item">
-        <a class="text-white nav-link {{#if isActive.[@index]}}active{{/if}}" aria-current="page" href="{{link}}">{{title}}</a>
+        <a class="text-white nav-link {{#if isActive.[@index]}}active{{/if}}" aria-current="page" href="{{link}}" data-link>{{title}}</a>
   </li>
   {{/each}}
 
         <li class="nav-item">
-  <a class="text-white nav-link" href="#">
+  <a class="text-white nav-link" href="/cart" data-link>
     <i class="fa-regular fa-cart-shopping"></i> Cart
   </a>
       </li>

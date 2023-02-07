@@ -144,7 +144,9 @@ fineWeight: "500g",
   },
   
 getCoins: function() {
-    return this.items.find(item => item.id > 7);
+     const coins = this.items.find(item => item.id > 7);
+  console.log(coins);
+  return coins;
   },
   addProduct: function(product) {
     this.items.push(product);

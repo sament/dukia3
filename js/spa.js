@@ -67,12 +67,9 @@ var path = window.location.pathname;
 
   
 };
-//let c = 0;
+
  layouts.topHeader =  function() {renderX('/views/templates/top-header.hbs', null, "#top-header");
-             //const ob =  JSON.stringify(this.caller);
-          // console.log("gg" + c);
-                               //   c=c+1;
-                                 };
+};
 
 layouts.footer = function() {
   renderX('/views/templates/footer.hbs', null, '#footer');
@@ -97,7 +94,6 @@ views.getStarted = function () {renderX('/views/register.hbs', null)};
   views.home = function () {
     console.log("home called");
     const slides2 = {products: products.getRandomProducts(6)};
-    //console.log(slides2);
 //localStorage.setItem("products", JSON.stringify(slides));
     
     renderX('/views/home.hbs', slides2);
@@ -141,6 +137,8 @@ console.log(routesX2['/login'][1]);
 
   //layouts.topHeader();
 
+/*
+
 $(document).on('click','[data-link]', function (e) {
  //init();
    e.preventDefault();//prevent anchor click default behaviour.
@@ -150,12 +148,25 @@ $(document).on('click','[data-link]', function (e) {
    var routes = page.substring(0,page.lastIndexOf('.'));//remove file extension that shows up in the url bar.
 
    window.history.pushState(null,null,routes);//assign new url to address bar and add page in browser history without reloading the page.
-      
-   //console.log("Ajax loaded: "+page);
   console.log(routesX);
 
 routesX[page]();
   //renderX(page, null);
+});
+*/
+
+
+
+$(document).on('click','[data-link]', function (e) {
+   e.preventDefault();//prevent anchor click default behavior.
+
+   var page = $(this).attr('href');//get URL from clicked link.
+
+   // Keep the actual URL in the address bar and add the page in the browser history without reloading the page
+   window.history.pushState(null, null, page);
+
+   // Call the function for the matching route
+   routesX[page]();
 });
 
 
@@ -174,18 +185,49 @@ renderX(page, null);
 //.htaccess for apache or any other web server edit file has to be edited 
 //to ensure that index.html file loads even if url in browser has been changed to maintain SPA system. 
 //e.g When user reloads the page or enters or paste a url with the same domain name but different path in the browser.
+/*
  $(window).on('load', function (){
 
    //console.log("ON LOAD");
   var url = window.location.href;//get page url from address bar.
   var routes = url.substring(url.lastIndexOf('/')+1);//return page route from url.
   var page = routes != '' ? url+".hbs" : "/views/home.hbs" ;//if route is empty assign home.html to page to ajax load the default content.
-//alert(page);
- //console.log(products.items);
+//alert(routes);
+
   layouts.topHeader();
    layouts.menu();
    layouts.footer();
 
    routesX['/']();
-   //renderX(page, null);
+  // renderX('/' + page, null);
+});*/
+
+
+$(window).on('load', function (){
+  // Get the page URL from the address bar
+  var url = window.location.href;
+  // Get the page route from the URL
+  var routes = url.substring(url.lastIndexOf('/')+1);
+
+  // Add a leading '/' to the returned route
+  routes = '/' + routes;
+
+  // Check if the route is in the routesX object
+  if (routesX[routes]) {
+
+  layouts.topHeader();
+  layouts.menu();
+  layouts.footer();
+    // Call the function for the matching route
+    routesX[routes]();
+    return;
+  }
+
+  // Code to handle other routes ...
+
+  layouts.topHeader();
+  layouts.menu();
+  layouts.footer();
+
+  routesX['/']();
 });
