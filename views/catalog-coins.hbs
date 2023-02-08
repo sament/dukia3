@@ -1,11 +1,31 @@
 
-<div class="container">
+<div class="container"> 
+  <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='currentColor'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a data-link href="/">Home</a></li>
+    <li class="breadcrumb-item" aria-current="page">Catalog</li>
+    <li class="breadcrumb-item active" aria-current="page">Gold Coin</li>
+    
+  </ol>
+</nav>
+</div>
+
+
+<div class="container p-5">
   <div class="row">
+    <div class="col-md-12">
+<div class="card p-4">
+<h3>Gold Coins</h3>
+  <p>
+All our products are investment grade precious metals with the highest purity produced by an <a href="https://www.lbma.org.uk/good-delivery/gold-current-list#-">LBMA Good Delivery Refiner</a>.  Buy from a wide selection of gold coins, including Gold Philharmonic Coins, Gold Britannia Coins, Gold Maple Leaf Coins, Gold Krugerrand Coins, and Gold Sovereign Coins at the most competitive prices. <br/>We employ a third-party professional vaulting service provider, Brink’s, for your storage needs and a local security carrier for your safe and insured deliveries.
+</p>
+</div>
+    </div>
       {{#each products}}
         <div class="col-md-4">
           <div class="card">
             <div id="carousel{{@index}}" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
+              <div class="carousel-inner p-3">
                 <div class="carousel-item active">
                   <img src="{{image}}" class="card-img-top" alt="Product Image">
                 </div>
@@ -16,19 +36,89 @@
                 {{/if}}
               </div>
               {{#if image2}}
+              
               <a class="carousel-control-prev" href="#carousel{{@index}}" role="button" data-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="carousel-control-prev-icon" aria-hidden="true_"></span>
                 <span class="sr-only">Previous</span>
               </a>
               <a class="carousel-control-next" href="#carousel{{@index}}" role="button" data-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="carousel-control-next-icon" aria-hidden="true_"></span>
                 <span class="sr-only">Next</span>
               </a>
               {{/if}}
             </div>
             <div class="card-body">
-              <h5 class="card-title">{{title}}</h5>
-              <p class="card-text">{{description}}</p>
+        
+
+              <div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="heading{{id}}">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <h4 class="card-title">{{title}}</h4>
+      </button>
+    </h2>
+    <div id="collapse{{id}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+    <p class="card-text" style="white-space: pre-line">{{description}}</p>
+      </div>
+    </div>
+  </div>
+              </div>
+              
+
+              <h5>Specifications</h5><br/>
+              
+              <ul class="list-group list-group-numbered_">
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Manufacturer</div>
+      {{manufacturer}}
+    </div>
+    
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Country of Origin</div>
+     {{countryOfOrigin}}
+    </div>
+    
+  </li><li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Gross Weight</div>
+      {{grossWeight}}
+    </div>
+  </li>
+  <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Fine Weight</div>
+      {{fineWeight}}
+    </div>
+  </li><li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Finesse</div>
+      {{fineness}}
+    </div>
+  </li><li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Grade</div>
+      {{grade}}
+    </div>
+  </li>
+   <li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Certificate</div>
+      {{certificate}}
+    </div>
+  </li>
+
+<li class="list-group-item d-flex justify-content-between align-items-start">
+    <div class="ms-2 me-auto">
+      <div class="fw-bold">Packaging</div>
+      {{packaging}}
+    </div>
+  </li>
+                
+</ul>
             </div>
             <div class="card-footer">
                      <button class="btn btn-primary">Buy</button>

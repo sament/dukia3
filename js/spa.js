@@ -1,9 +1,6 @@
 /*
-Jquery SPA without hash example. A simple code!
-Version: 0.1.0.
-Written by: Sedem stickx <sedemdatsa69@gmail.com>
+Jquery SPA 
 */
-
 //deprecated method but is very useful in showing type of page load action a user has taken.
 //For testing purposes.
 //console.log(performance.navigation.type);
@@ -26,6 +23,7 @@ Handlebars.registerHelper("reduceString", function(txt) {
   }
   });
 
+//depreciated
 let render = function(pageContent, data, element ="#page") {
    let template = Handlebars.compile(pageContent);
       var html = template(data);
@@ -93,7 +91,7 @@ views.getStarted = function () {renderX('/views/register.hbs', null)};
 
   views.home = function () {
     console.log("home called");
-    const slides2 = {products: products.getRandomProducts(6)};
+    const slides2 = {products: products.items};
 //localStorage.setItem("products", JSON.stringify(slides));
     
     renderX('/views/home.hbs', slides2);
@@ -101,8 +99,7 @@ views.getStarted = function () {renderX('/views/register.hbs', null)};
   };
 
 views.coinsCatalog = function() {
-  alert("c");
-      const items = {products: products.getCoins()};
+      const items = {products: products.getByType('coin')};
     renderX('/views/catalog-coins.hbs', items);
 };
 
@@ -120,12 +117,15 @@ let routesX = {
   '/get-started': views.getStarted,
    '/contact': views.contact,
   '/catalog-coins': views.coinsCatalog,
+  '/buy-gold': views.coinsCatalog,
+  'sell-gold': views.coinsCatalog,
   '/product/:id': views.product,
    '/order/:id': views.order,
   '/login': views.login
 };
 
 let routesX2 = {
+  
 
   '/': ['Home', views.home],
   '/login': ['Login', views.login],
@@ -133,7 +133,7 @@ let routesX2 = {
   //'/order:id': ['']
 };
 
-console.log(routesX2['/login'][1]);
+//console.log(routesX2['/login'][1]);
 
   //layouts.topHeader();
 
