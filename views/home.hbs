@@ -13,7 +13,7 @@
           <h2 class="banner-h dukia-color_ text-white">Buy & Sell Gold</h2>
     <div class="talk text-large fw-light text-white">
 Dukia Gold, your trustworthy refiner and bullion merchant.
-     <div> <a href="/buy-now" data-link class="mt-2 btn btn-sm btn-outline-light yellow3-b cta-w bg-white text-dark"> Buy Now</a>
+     <div> <a href="/buy-now" data-link class="mt-2 btn btn-sm btn-outline-light yellow3-b cta-w bg-white text-dark hide"> Buy Now</a>
     </div>
     </div>
     
@@ -30,73 +30,94 @@ Dukia Gold, your trustworthy refiner and bullion merchant.
 <div class="row">
   <div class="slider">
       {{#each products}}
-<div class="card mx-2 py-4 px-4 no-border" style="width: 18rem; position:relative; ">
-  <img data-lazy="{{image}}" class="card-img-top w-4" alt="..." style="">
+<div class="card mx-2 py-4 px-4 no-border" style="width: 18rem; position:relative;">
+  
+  <img data-lazy="{{image}}" class='card-img-top w-4 {{#if
+    (eq type "coin")}}card-coin-img{{else}}card-img-coin{{/if}}' alt="..." style="">
+  
   <div class="card-body">
-    <h6 class="card-title text-sm fw-bold"><a href="/product/{{id}}" data-link>{{heading}}</a></h6>
-    <p class="card-text">
-      {{reduceString description 15}}
+    <div class="mb-2card-title-x text-sm fw-bold-x  text-dark"><a style="font-weight:700; line-height:0.3px !important; font-family: 'Alegreya Sans', sans-serif;"class="text-bold card-product-name" href="/product/{{id}}" data-link>{{heading}}</a></div>
+    <p class="card-text ">
+<!--       reduceString description 15 -->
+      {{#if (eq type "coin")}}
+      <span class="text-sm" style="font-size: 10px">Gross Weight: {{grossWeight}}</span>
+      {{/if}}
     </p>
-    <a id="addToCart" href="#"  item-id="{{id}}" item-name="{{heading}}" class="rounded btn btn-outline-primary btn-sm w-100"   data-toggle="modal" data-target="#addtoCartNotice" data-product-name="{{heading}} X" data-rate="1" data-bs-toggle="modal" data-bs-target="#addtoCartNotice"><i class="fa fa-cart-plus" aria-hidden="true"></i>
+   
+    <a id="addToCart" href="#" data-item-fineWeight="{{fineWeight}}" data-itemId="{{id}}" item-name="{{heading}}" class="add-to-cart rounded btn btn-outline-primary btn-sm w-100"   xx-data-toggle="modal" xx-data-target="#addtoCartNotice" data-product-name="{{heading}}" data-rate="1" data-bs-toggle="modal" data-bs-target="#addtoCartNotice"><i class="fa fa-cart-plus" aria-hidden="true"></i>
       </a>
+    <div class="d-flex justify-content-between">
+  <button class="hide btn btn-success">Buy</button>
+  <span id="buyPrice" class="text-success"></span>
+  <span class="mx-2"></span>
+  <span id="sellPrice" class="text-danger"></span>
+  <button class="hide btn btn-danger">Sell</button>
+</div>
+
   </div>
 <div class="hide" style="position: absolute; top: 17px; right: 10px; padding: 11px;  border-radius: 50%; border: solid 1px var(--primary)">
   <a href="#" class="dukia-color" id="addToCart" item-id="{{id}}" > 
     <i class="fa fa-cart-plus" class="dukia-color"></i></a>
   </div>
-  
 </div>
-
   {{/each}}
-    
 </div>
-			
-  
 </div>
 
 </div>
 
 </div>
+
 <!-- Modal -->
-<div class="modal fade" id="addtoCartNotice" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
+<div class="modal fade" id="addtoCartNotice" tabindex="-1" role="dialog" aria-labelledby="addToCartModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Item Added to Cart!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="addToCartModalLabel">Add to Cart</h5>
+        <button type="button" class="btn-close" data-dismiss="modal" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <label id="mCartProduct"></label>
-        <div class="container-fluid">
-  <div class="row">
-    <div class="col-4 p-2">
-      <img src="product-image.jpg" alt="Product Image" class="img-fluid">
+        <div class="row align-items-center mb-3">
+          <div class="col-3">
+            <img id="cmodal-img"  src="product-icon.jpg" class="img-fluid" alt="Product Icon">
+          </div>
+          <div class="col-9">
+            <h6 id="cmodal-name" class="text-secondary">Product Name</h6>
+  <h6 class="text-secondary" id="cmodal-grossWeight">
+    
+  </h6><div class="d-flex form-group mb-3">
+          
+      <!--    <input id ="cmodal-qty" class="cmodal-qty number form-control ms-2" step="1" value="1" max="10" min="1" style="max-width: 50px; margin-right:5px; padding: 5px" /> -->
+    
+  <div class="input-group spinner">
+    <div class="input-group-prepend">
+      <button class="btn text-monospace minus" type="button">-</button>
     </div>
-    <div class="col-8 p-2">
-      <h5>Product Name</h5>
+    <input id="cmodal-qty" type="number" class="cmofal-qty count form-control" min="1" max="10" step="1" value="1" readonly="readonly">
+    <div class="input-group-append">
+      <button class="btn text-monospace plus" type="button">+</button>
     </div>
   </div>
-  <hr>
-  <div class="row">
-    <div class="col-6 p-2">
-      <h6>Product Subtotal</h6>
-    </div>
-    <div class="col-6 p-2 text-right">
-      <h6>$100</h6>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-12 p-2 text-center">
-      <h6>Shipping Terms Apply</h6>
+    
+x &nbsp <span id="cmodal-rate" class="text-secondary text-md">$0.00</span>
+          
+        </div><hr />
+            <div class="d-flex form-group mb-3">
+              <h6 class="text-secondary">Subtotal:</h6>
+          <h6 id ="cmodal-subtotal" class="font-weight-bold">$0</h6>
+            </div>
+          </div>
+        </div>
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" data-bs-dismiss="modal" >Close</button>
+        <button type="button" class="btn btn-primary">Add to Cart</button>
+      </div>
     </div>
   </div>
 </div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-    </div>
-  </div>
-</div>
+
 <scrpt src="./views/home.js" ></scrpt>

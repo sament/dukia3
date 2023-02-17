@@ -1,4 +1,5 @@
 const BASE_URL = "https://php-server-repl-api.samueliso.repl.co/";
+const LIVE_PRICE_URL = "https://outlets.goldline.co.uk/outlets/GetSpringFountPricesXML.asp?Key=foUntAinS!71x";
 
 const CRUD = {
   init: function(options) {

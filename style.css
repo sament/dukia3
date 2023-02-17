@@ -1,3 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.btn {
+  cursor: pointer;
+  transition: background 0.3s 
+}
+
+
 footer {
   /*position: absolute;
   bottom: 0;
@@ -64,7 +75,13 @@ footer {
   border-color: var(--primary);
 }
 
-body{font-family: 'Open Sans', sans-serif;}
+body{min-height: 100vh !important;display: flex !important;
+    flex-direction: column !important;
+  font-family: 'Open Sans', sans-serif;}
+
+footer{
+    margin-top: auto !important;
+}
 .cardbody-color{
   background-color: #ebf2fa;
 }
@@ -136,17 +153,24 @@ display: flex;
 justify-content: center;
 }
 }
-
-    .card {
+ .card {
         margin-bottom: 20px;
       }
       .card-img-top {
-        height: 350px;
-        object-fit: contain;
-      }
-      .carousel-control-prev, .carousel-control-next {
-        cursor: pointer;
-      }
+        max-height: 386px;
+        display: block;
+/*         max-height: 270px; */
+/*         height: auto; */
+/*         width: auto; */
+/*         object-fit: contain; */
+        
+ }
+.card-coin-img{max-height: 300px !important
+              
+              }
+.card-product-name{color: #000  !important; margin-bottom: 10px; font-size: 18px font-weight: 600; !important; padding-bottom: 10px}
+ .carousel-control-prev, .carousel-control-next { cursor: pointer;
+ }
 
 .slick-prev {
   left: -10px;
@@ -159,3 +183,72 @@ justify-content: center;
   top: 50%;
   transform: translate(0, -50%);
 }
+
+/*
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+
+}
+*/
+
+
+
+#cmodal-qty{
+  max-width:70px;
+}
+
+/* input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.number-input {
+  position: relative;
+  width: fit-content;
+}
+
+input {
+  width: 60px;
+}
+
+.spinners {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: 1px;
+  transform: translateY(-50%);
+}
+
+.spinner {
+  font-size: 7px;
+  border: none;
+  padding: 0 1px;
+}
+
+.spinner:hover {
+  background: lightgrey;
+} */
+
+.spinner {
+  * {
+    text-align: center;
+  }
+  input {
+    pointer-events: none;
+    background-color: white !important;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    margin: 0;
+    -webkit-appearance: none;
+  }
+}
+
+
+.livePrice {font-soze:8px !important}

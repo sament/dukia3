@@ -6,8 +6,22 @@ Jquery SPA
 //console.log(performance.navigation.type);
 
 //when user clicks on any anchor tag with a data-link attribute fire this event.
-//import { products } from "./js/products.js";
-//import { products } from 'products.js';
+
+const oldValue = 1856.03;
+const percentage = -1;
+
+const newValue = util.calculatePer(oldValue,percentage);
+
+console.log(newValue); // 2064.94698
+
+util.setPrevBid(0);
+util.setPrevAsk(0);
+
+let goldInOz = 1;
+let goldInKg = 1;
+
+//console.log(util.convertToGrams(goldInOz, "oz") + " grams"); // 28.3495 grams
+//console.log(util.convertToGrams(goldInKg, "kg") + " grams"); // 1000 grams
 
   
 Handlebars.registerHelper("eq", function(a, b) {
@@ -22,7 +36,18 @@ Handlebars.registerHelper("reduceString", function(txt) {
   return reducedWords.join(" ") + "...";
   }
   });
-
+/*
+Handlebars.registerHelper("getPrice", function(itemId, priceType){
+    item = products.getProductById(itemId);
+  
+  if(priceType == "buy"){
+    
+  }
+  if(priceType == "sell"){
+    
+  }
+});
+*/
 //depreciated
 let render = function(pageContent, data, element ="#page") {
    let template = Handlebars.compile(pageContent);
@@ -66,7 +91,13 @@ var path = window.location.pathname;
   
 };
 
- layouts.topHeader =  function() {renderX('/views/templates/top-header.hbs', null, "#top-header");
+ layouts.topHeader =  function() {
+   
+renderX('/views/templates/top-header.hbs', null, "#top-header"); 
+   $.getScript("./views/templates/top-header.js", function(){
+
+     //alert("th script called");
+   }) 
 };
 
 layouts.footer = function() {
@@ -82,7 +113,6 @@ views.product = function() {
 views.login = function() {
   renderX('/views/login.hbs', null);
   //$.getScript("./views/login.js", function() {
-   // console.log("Login script loaded");
     // Call the login function from the dynamically loaded script
     //login("user@example.com", "password123");
   //});
@@ -90,12 +120,12 @@ views.login = function() {
 views.getStarted = function () {renderX('/views/register.hbs', null)};
 
   views.home = function () {
-    console.log("home called");
-    const slides2 = {products: products.items};
+    
+    const slides2 = {products: products.getRandomProducts(10)};
 //localStorage.setItem("products", JSON.stringify(slides));
     
     renderX('/views/home.hbs', slides2);
- $.getScript("./views/home.js", function(){ console.log("views home script loaded");}) 
+ $.getScript("./views/home.js", function(){}) 
   };
 
 views.coinsCatalog = function() {
@@ -133,40 +163,16 @@ let routesX2 = {
   //'/order:id': ['']
 };
 
-//console.log(routesX2['/login'][1]);
 
-  //layouts.topHeader();
+document.addEventListener('click', function(e) {
+  if (!e.target.matches('[data-link]')) return;
+  e.preventDefault();
 
-/*
+  var page = e.target.getAttribute('href');
 
-$(document).on('click','[data-link]', function (e) {
- //init();
-   e.preventDefault();//prevent anchor click default behaviour.
+  window.history.pushState(null, null, page);
 
-   var page = $(this).attr('href');//get url from clicked link.
-
-   var routes = page.substring(0,page.lastIndexOf('.'));//remove file extension that shows up in the url bar.
-
-   window.history.pushState(null,null,routes);//assign new url to address bar and add page in browser history without reloading the page.
-  console.log(routesX);
-
-routesX[page]();
-  //renderX(page, null);
-});
-*/
-
-
-
-$(document).on('click','[data-link]', function (e) {
-   e.preventDefault();//prevent anchor click default behavior.
-
-   var page = $(this).attr('href');//get URL from clicked link.
-
-   // Keep the actual URL in the address bar and add the page in the browser history without reloading the page
-   window.history.pushState(null, null, page);
-
-   // Call the function for the matching route
-   routesX[page]();
+  routesX[page]();
 });
 
 
@@ -185,22 +191,6 @@ renderX(page, null);
 //.htaccess for apache or any other web server edit file has to be edited 
 //to ensure that index.html file loads even if url in browser has been changed to maintain SPA system. 
 //e.g When user reloads the page or enters or paste a url with the same domain name but different path in the browser.
-/*
- $(window).on('load', function (){
-
-   //console.log("ON LOAD");
-  var url = window.location.href;//get page url from address bar.
-  var routes = url.substring(url.lastIndexOf('/')+1);//return page route from url.
-  var page = routes != '' ? url+".hbs" : "/views/home.hbs" ;//if route is empty assign home.html to page to ajax load the default content.
-//alert(routes);
-
-  layouts.topHeader();
-   layouts.menu();
-   layouts.footer();
-
-   routesX['/']();
-  // renderX('/' + page, null);
-});*/
 
 
 $(window).on('load', function (){
@@ -215,7 +205,7 @@ $(window).on('load', function (){
   // Check if the route is in the routesX object
   if (routesX[routes]) {
 
-  layouts.topHeader();
+  //layouts.topHeader();
   layouts.menu();
   layouts.footer();
     // Call the function for the matching route
@@ -224,10 +214,23 @@ $(window).on('load', function (){
   }
 
   // Code to handle other routes ...
-
-  layouts.topHeader();
+  //layouts.topHeader();
   layouts.menu();
   layouts.footer();
 
   routesX['/']();
 });
+
+
+const input = document.querySelector('input[type=number]')
+
+const increment = () => {
+  alert("i");
+  input.value = Number(input.value) + 1
+}
+const decrement = () => {
+  input.value = Number(input.value) - 1
+}
+
+document.querySelector('.spinner.increment').addEventListener('click', increment)
+document.querySelector('.spinner.decrement').addEventListener('click', decrement)

@@ -1,8 +1,11 @@
 <header id= "topheader" class="container-fluidx d-flex align-items-center justify-content-between p-3 top-header mb-0">
-  <div class="d-flex align-items-center">
+  <div class="d-flex align-items-center livePrice">
 
-    <span class="badge badge-light text-secondary pe-1"> <span>Buy: </span> $176.3/oz</span>
-<span class="badge badge-light text-secondary px-1"> <span>Sell: </span> $176.9/oz</span>
+    <span class="badge badge-light text-secondary pe-1"> <span>Buy: </span> <span id="liveBuyPrice" data-bid="0" class="hide">0</span><span id="liveBuyPricePercent" class="hide hidden">(-%)</span>
+    
+    
+</span>
+<span class="badge badge-light text-secondary px-1"> <span>Sell: </span> <span id="liveSellPrice" class="hide" data-ask="0">-</span><span class="hide hidden" id="liveSellPricePercent">(-%)</span></span>
   </div>
   <div class="d-flex align-items-center justify-content-between">
   <a href="#" class="cart-link">
