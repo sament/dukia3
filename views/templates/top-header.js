@@ -36,15 +36,15 @@ function getGoldPrices() {
       let bidClass = 'text-success';
       let askClass = 'text-success';
 
-      if (newBid < prevBid) {
+      if (newBid < util.prevBid) {
         bidClass = 'text-danger';
-      } else if (newBid > prevBid) {
+      } else if (newBid > util.prevBid) {
         bidClass = 'text-success';
       }
 
-      if (newAsk < prevAsk) {
+      if (newAsk < util.prevAsk) {
         askClass = 'text-danger';
-      } else if (newAsk > prevAsk) {
+      } else if (newAsk > util.prevAsk) {
         askClass = 'text-success';
       }
 
@@ -53,11 +53,11 @@ function getGoldPrices() {
 
       document.getElementById('liveBuyPrice').textContent = `$${fask}/oz`;
       document.getElementById('liveBuyPrice').className = askClass;
-      document.getElementById('liveBuyPricePercent').textContent = `(${((newAsk - prevAsk) / prevAsk * 100).toFixed(2)}%)`;
+      document.getElementById('liveBuyPricePercent').textContent = `(${((newAsk - util.prevAsk) / util.prevAsk * 100).toFixed(2)}%)`;
 
       document.getElementById('liveSellPrice').textContent = `$${fbid}/oz`;
       document.getElementById('liveSellPrice').className = bidClass;
-      document.getElementById('liveSellPricePercent').textContent = `(${((newBid - prevBid) / prevBid * 100).toFixed(2)}%)`;
+      document.getElementById('liveSellPricePercent').textContent = `(${((newBid - util.prevBid) / util.prevBid * 100).toFixed(2)}%)`;
 
       $("#liveBuyPrice").show();
       $("#liveSellPrice").show();

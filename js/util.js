@@ -6,10 +6,10 @@ goldSellPrice: 0,
 prevBid: null,
   prevAsk: null,
   setPrevBid: function(value) {
-    util.prevBid = value;
+    this.prevBid = value;
   },
   setPrevAsk: function(value) {
-    util.prevAsk = value;
+    this.prevAsk = value;
   },
 
   setGoldBuyPrice: function(price){

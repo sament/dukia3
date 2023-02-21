@@ -48,14 +48,15 @@ Handlebars.registerHelper("getPrice", function(itemId, priceType){
   }
 });
 */
-//depreciated
+//puts handlebars template into view(html element)
 let render = function(pageContent, data, element ="#page") {
    let template = Handlebars.compile(pageContent);
       var html = template(data);
-  //console.log(element);
       $(element).html(html);
  };
 
+
+//the function that loads handlebar templates 
   let renderX = function(path,data, element ="#page"){
     //console.log("e:" + element)
        $.get(path, function (pageContent) {
@@ -64,8 +65,10 @@ let render = function(pageContent, data, element ="#page") {
   };
 
 
+//for menu, top header and footer
 let layouts = {};
-  
+
+//define #MENU ITEMS and their route(url path)
 layouts.menu = function (){
 let menu = [
 {title: "Buy Gold", parent: null, link: "/buy-gold"},
@@ -74,7 +77,7 @@ let menu = [
 {title: "About", parent: null, link: "/about"},
 {title: "Contact", parent: null, link: "/contact"}
 ];
-   //console.log("ab");
+   //get current url(path)
 var path = window.location.pathname;
   var isActive = [];
 
@@ -88,28 +91,26 @@ var path = window.location.pathname;
   console.log("views menu script loaded");
 }) 
 
-  
 };
 
  layouts.topHeader =  function() {
    
 renderX('/views/templates/top-header.hbs', null, "#top-header"); 
-   $.getScript("./views/templates/top-header.js", function(){
-
-     //alert("th script called");
-   }) 
+   $.getScript("./views/templates/top-header.js", function(){ }) 
 };
 
 layouts.footer = function() {
   renderX('/views/templates/footer.hbs', null, '#footer');
 };
 
+//for Pages
 let views = {};
 
 views.product = function() {
   alert("under constructiom");
 }
 
+//login page
 views.login = function() {
   renderX('/views/login.hbs', null);
   //$.getScript("./views/login.js", function() {
@@ -117,6 +118,7 @@ views.login = function() {
     //login("user@example.com", "password123");
   //});
 };
+//get started page
 views.getStarted = function () {renderX('/views/register.hbs', null)};
 
   views.home = function () {
@@ -138,10 +140,10 @@ views.coinsCatalog = function() {
   
 
 //function to display the order page content
-id = 0;
+id = 0;//todo: id will be gotten from url
  views.order = renderX(`/views/order-details.hbs`, id);
 
-
+//ROUTES
 let routesX = {
    '/': views.home,
   '/get-started': views.getStarted,
@@ -154,16 +156,15 @@ let routesX = {
   '/login': views.login
 };
 
-let routesX2 = {
-  
 
+let routesX2 = {
   '/': ['Home', views.home],
   '/login': ['Login', views.login],
   '/get-started': ['Get Started', views.getStarted]
   //'/order:id': ['']
 };
 
-
+//get href from <a> element with data-link attributes and redner the href.
 document.addEventListener('click', function(e) {
   if (!e.target.matches('[data-link]')) return;
   e.preventDefault();
@@ -205,7 +206,7 @@ $(window).on('load', function (){
   // Check if the route is in the routesX object
   if (routesX[routes]) {
 
-  //layouts.topHeader();
+  layouts.topHeader();
   layouts.menu();
   layouts.footer();
     // Call the function for the matching route
@@ -214,7 +215,7 @@ $(window).on('load', function (){
   }
 
   // Code to handle other routes ...
-  //layouts.topHeader();
+  layouts.topHeader();
   layouts.menu();
   layouts.footer();
 
