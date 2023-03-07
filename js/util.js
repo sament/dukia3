@@ -17,7 +17,7 @@ prevBid: null,
   },
 
   setGoldSellPrice: function(price){
-    this.goldSellPrice = price;
+     this.goldSellPrice = price;
   },
 convertToGrams: function (value, unit) {
   if (unit === "oz") {

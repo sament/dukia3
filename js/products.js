@@ -2,9 +2,7 @@
 spa products.js
 logic for fetching and filtering products
 */
-
 const products = { 
-
   getAllProducts: function() {
     return this.items;
   },
@@ -12,7 +10,6 @@ const products = {
   getProductById: function(id) {
     return this.items.find(item => item.id === id);
   },
-  
   getByType: function (type) {
   return this.items.filter(item => item.type === type);
  },
@@ -40,7 +37,6 @@ getCoins: function() {
     return shuffledItems.slice(0, numberOfProducts);
   },
 
-  
  reduceString: function(str, size) {
   let words = str.split(" ");
   if (words.length <= size) return str;
@@ -78,7 +74,7 @@ getCoins: function() {
 
 //let weight = "31.61 g";
 //let grams = convertToGrams(weight);
-//console.log(grams); // Output: 31.61
+//console.log(grams); // Output: 31.61https://res.cloudinary.com/dcu3hr3eo/image/upload/v1677004772/1oz-philoro-bar_mw75ef.png
 
   items: [
     { 
@@ -136,22 +132,22 @@ getCoins: function() {
    sell: -1,
       buy: 11.14,
       id: 6,
-      title: "500 Grams Philoro Gold Minted Bar of 999.9 fineness",
+      title: "50 Grams Philoro Gold Minted Bar of 999.9 fineness",
    type: "bar",
-      heading: "500 Grams Philoro Gold Minted Bar of 999.9 fineness",
-      image: "https://res.cloudinary.com/dcu3hr3eo/image/upload/v1675708127/500-Grams-Philoro-Gold-Minted-Bar_nddidp.jpg",
-fineWeight: "500 g",
+      heading: "50 Grams Philoro Gold Minted Bar of 999.9 fineness",
+      image: "https://res.cloudinary.com/dcu3hr3eo/image/upload/v1677004797/50g-philoro-gold-bar_xt9lem.png",
+fineWeight: "50 g",
       countryOfOrigin: "Switzerland",
       manufacturer: "Valcambi S.A.",
      fineness: "999.9",
       grade: "New",
       certificate: "Yes",
       packaging: "Tamper-evident packaging",
-   description: "The 500 Grams minted gold bar from Philoro is a 999.9 fine gold bar with a high-lustre finish and rounded edges. The front surface is imprinted with the Valcambi S.A. refinery mark of the letters 'CHI ESSAYEUR FONDEUR' on the gold bar. The front face also shows the bar's weight of 500 Grams, fine gold content of 999.9, and a unique serial number imprinted on it. \n \n The gold bar is VAT free if the secure storage option with Brink’s is opted for. Storage fee is free for the first 12 months of storage. Your specific numbered gold bar will be fully allocated to you in your name and segregated within the vault. \n \n All shipping costs is inclusive of handling, protective packaging, insurance, and VAT. The cost of shipping to your preferred location will be advised upon request."
+   description: "The 50 Grams minted gold bar from Philoro is a 999.9 fine gold bar with a high-lustre finish and rounded edges. The front surface is imprinted with the Valcambi S.A. refinery mark of the letters 'CHI ESSAYEUR FONDEUR' on the gold bar. The front face also shows the bar's weight of 50 Grams, fine gold content of 999.9, and a unique serial number imprinted on it. \n \n The gold bar is VAT free if the secure storage option with Brink’s is opted for. Storage fee is free for the first 12 months of storage. Your specific numbered gold bar will be fully allocated to you in your name and segregated within the vault. \n \n All shipping costs is inclusive of handling, protective packaging, insurance, and VAT. The cost of shipping to your preferred location will be advised upon request."
     },
     { 
       sell: -1,
-      buy: 11.14,
+      buy: 6,
       id: 7,
       title: "1 Kilogram Philoro Gold Minted Bar of 999.9 fineness",
       type: "bar",
@@ -166,6 +162,29 @@ fineWeight: "500 g",
       packaging: "Tamper-evident packaging",
       description: "The 1 Kilogram minted gold bar from Philoro is a 999.9 fine gold bar with a high-lustre finish and rounded edges. The front surface is imprinted with the Valcambi S.A. refinery mark of the letters 'CHI ESSAYEUR FONDEUR' on the gold bar. The front face also shows the bar's weight of 1 Kilogram, fine gold content of 999.9, and a unique serial number imprinted on it. \n \n The gold bar is VAT free if the secure storage option with Brink’s is opted for. Storage fee is free for the first 12 months of storage. Your specific numbered gold bar will be fully allocated to you in your name and segregated within the vault. \n \n All shipping costs is inclusive of handling, protective packaging, insurance, and VAT. The cost of shipping to your preferred location will be advised upon request."
     },
+  { 
+      sell: -1,
+      buy: 11.14,
+      id: 65,
+      title: "1 oz Philoro Gold Minted Bar of 999.9 fineness",
+      type: "bar",
+      heading: "1 oz Philoro Gold Minted Bar of 999.9 fineness",
+      image: "https://res.cloudinary.com/dcu3hr3eo/image/upload/v1675708280/1-Kilogram-Philoro-Gold-Minted-Bar_nznbsd.jpg",
+      fineWeight: "1.00 oz",
+      countryOfOrigin: "Switzerland",
+      manufacturer: "Valcambi S.A.",
+     fineness: "999.9",
+      grade: "New",
+      certificate: "Yes",
+      packaging: "Tamper-evident packaging",
+      description: "The 1 ounce minted gold bar from Philoro is a 999.9 fine gold bar with a high-lustre finish and rounded edges. The front surface is imprinted with the Valcambi S.A. refinery mark of the letters 'CHI ESSAYEUR FONDEUR' on the gold bar. The front face also shows the bar's weight of 1 oz, fine gold content of 999.9, and a unique serial number imprinted on it. \n \n The gold bar is VAT free if the secure storage option with Brink’s is opted for. Storage fee is free for the first 12 months of storage. Your specific numbered gold bar will be fully allocated to you in your name and segregated within the vault. \n \n All shipping costs is inclusive of handling, protective packaging, insurance, and VAT. The cost of shipping to your preferred location will be advised upon request."
+    },
+//https://res.cloudinary.com/dcu3hr3eo/image/upload/v1677004772/1oz-philoro-bar_mw75ef.png
+    //https://res.cloudinary.com/dcu3hr3eo/image/upload/v1677004797/50g-philoro-gold-bar_xt9lem.png
+
+    //https://res.cloudinary.com/dcu3hr3eo/image/upload/v1677004809/1oz-american-eagle-coin_erl8rl.png
+    
+    //**# COINS
     { 
       sell: -1,
       buy: 11.14,
